@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Portfolio</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="logo" href="#home">MyPortfolio</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills & Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+                <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle color theme">🌙</button>
+            </div>
+        </nav>
+
+        <section id="home" class="hero">
+            <div class="container hero-inner">
+                <div class="hero-left">
+                    <div class="avatar" aria-hidden="true">
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <h1>Hi, I'm <span class="name">Zaw Ye Htet Naing</span></h1>
+                    <p class="sub"><span id="type" data-words='["A Fullstack Developer.","A technical problem solver.","Eager to learn new things."]'></span></p>
+                    <div class="hero-actions">
+                        <a class="cta" href="#contact">Get in touch</a>
+                        <a class="ghost" href="#experience">View work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="container">
+        <section id="about" class="section card reveal">
+            <h2>About</h2>
+            <p>Experienced Software Engineer with a passion for creating innovative solutions which have tangible impact. With a solid background in full-stack development, I specialize in building robust, scalable and maintainable applications that meet both user needs and technical objectives.
+                My journey in software engineering spans over 5 years, during which I've honed my skills in various programming languages (mainly Javascript and Python), got educated on cloud (AWS), got hands-on experience deploying containerized application (docker) and many more. Also. My enjoyment in continuous learning let me adapts to emerging technologies and keep up with the latest trends.
+                Beyond my technical skills, I prioritize effective communication and teamwork. Moreover, loves to takes on new challenges and solve complex problems</p>
+        </section>
+
+        <section id="experience" class="section reveal">
+            <h2>Experience</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Software Engineer — Technopro Engineering</h3>
+                    <p class="muted">2024 Mar — Present</p>
+                    <p>Developed multiple web systems for a low-code platform using React, Express and MongoDB. The low-code platform called PFLCD is built on a microservices-based architecture.</p>
+                </article>
+                <article class="card">
+                    <h3>Fullstack Developer — EngineerForce</h3>
+                    <p class="muted">2022 Feb — 2024 Feb</p>
+                    <p>Built a project management SAAS product using React as the frontend and Django Rest Framework as the backend. The choice of the database is Postgres. </p>
+                </article>
+                <article class="card">
+                    <h3>Fullstack Developer — Librasun Solutions</h3>
+                    <p class="muted">2021 Jun — 2021 Nov</p>
+                    <p>Enhanced and optimized a tailored ERP solution with PHP framework Yii2 and MySQL database in a MVC architecture.</p>
+                </article>
+                <article class="card">
+                    <h3>Odoo Developer — DigiPower MM</h3>
+                    <p class="muted">2019 Dec — 2020 Nov</p>
+                    <p>Developed and deployed Odoo ERP solutions for a large plastics manufacturing company.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="education" class="section reveal">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>B.Sc(Hons) Computing —  Edinburgh Napier University</h3>
+                <p class="muted">2015 — 2019</p>
+                <p>Main focus: Software Development.<br />
+                    Final Year Project: Developed an NLP-based ANN system for detecting emotions from Twitter (now X) posts.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section reveal">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Frameworks</h3>
+                    <ul class="skill-list">
+                        <li>React</li>
+                        <li>Django / DRF</li>
+                        <li>Express</li>
+                        <li>Yii2</li>
+                        <li>Odoo</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Tools & DB</h3>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>MongoDB</li>
+                        <li>Postgres</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Cloud & Containerization</h3>
+                    <ul class="skill-list">
+                        <li>AWS</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3>Certifications</h3>
+                    <ul class="skill-list">
+                        <li>AWS Certified Solution Architect Professional (2025 Oct)</li>
+                        <li>AWS Certified Developer Associate (2025 Mar)</li>
+                        <li>JLPT N1 (2024 Jan)</li>
+                        <li>IELTS BAND 7.0 (2017 Dec)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section card reveal">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:zawye.official20@gmail.com">zawye.official20@gmail.com</a></p>
+            <p>Or connect via <a href="https://www.linkedin.com/in/zawyehtetnaing/" target="_blank" rel="noopener">LinkedIn</a> 
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p> last Updated @ 2025 Oct</p>
+        </div>
+    </footer>
+
+    <!-- simple back-to-top button -->
+    <button id="back-to-top" class="back-to-top not-show" aria-label="Back to top" title="Back to top">↑</button>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

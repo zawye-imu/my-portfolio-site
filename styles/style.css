@@ -1,0 +1,289 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa6b2;
+  --accent:#7c5cff;
+  --accent-2:#3bd3c8;
+  --glass: rgba(255,255,255,0.03);
+  --max-width:1100px;
+  --radius:12px;
+  --easing:cubic-bezier(.2,.9,.2,1);
+  --text-color: #e6eef8; /* (dark theme) text */
+  --avatar-text: #ffffff;
+  --chip-text: #dbe9ff;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* ensure body uses the variable so theme can override it */
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(1200px 400px at 10% 10%, rgba(124,92,255,0.06), transparent),
+             radial-gradient(900px 300px at 90% 80%, rgba(59,211,200,0.03), transparent),
+             linear-gradient(180deg,#061021 0%, #071428 50%, #07112a 100%);
+  color: var(--text-color);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Light theme overrides */
+body.light-theme{
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --muted: #586069;
+  --accent: #5b21b6;
+  --accent-2: #059669;
+  --glass: rgba(2,6,23,0.03);
+  --text-color: #0b1220; /* dark text for light theme */
+  --avatar-text: #ffffff; /* avatar can stay light if bg is colored */
+  --chip-text: #0b1220;
+  background: linear-gradient(180deg,#ffffff 0%, #f3f6fb 100%);
+}
+
+/* theme toggle button */
+.nav-actions{display:flex;align-items:center;gap:0.5rem;margin-left:auto}
+.theme-toggle{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text-color);
+  padding:0.35rem 0.5rem;border-radius:8px;font-size:1rem;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;line-height:1;
+  transition:background .18s ease, transform .12s ease;
+}
+.theme-toggle:hover{transform:translateY(-2px)}
+body.light-theme .theme-toggle{border-color:rgba(11,18,32,0.06)}
+
+/* make sure cards and muted text read in light theme */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+body.light-theme .card{background:var(--card);box-shadow:0 6px 18px rgba(11,18,40,0.04);border:1px solid rgba(11,18,40,0.04)}
+.muted{color:var(--muted)}
+
+/* ensure links remain visible in light theme */
+a{color:var(--accent)}
+body.light-theme a{color:var(--accent)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  background:radial-gradient(1200px 400px at 10% 10%, rgba(124,92,255,0.06), transparent),
+             radial-gradient(900px 300px at 90% 80%, rgba(59,211,200,0.03), transparent),
+             linear-gradient(180deg,#061021 0%, #071428 50%, #07112a 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Layout */
+.container{max-width:var(--max-width);margin:0 auto;padding:2rem;}
+.nav{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:0.75rem 1rem;
+
+  /* make nav sticky across the top */
+  position:sticky;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:60;
+
+  /* visual polish so content behind is blurred */
+  background:linear-gradient(180deg, rgba(8,12,20,0.78), rgba(8,12,20,0.45));
+  backdrop-filter: blur(8px);
+
+  /* subtle separation */
+  border-bottom:1px solid rgba(255,255,255,0.02);
+}
+.logo{font-weight:700;color:var(--accent);text-decoration:none;font-size:1rem}
+.nav-links{list-style:none;margin:0;display:flex;gap:1rem;padding:0}
+.nav-link{color:#cfe6ff;text-decoration:none;padding:0.5rem 0.6rem;border-radius:8px;transition:background .18s var(--easing),transform .12s var(--easing)}
+.nav-link:hover{background:var(--glass);transform:translateY(-2px)}
+.nav-link.active{background:linear-gradient(90deg, rgba(124,92,255,0.16), rgba(59,211,200,0.04));box-shadow:0 8px 30px rgba(124,92,255,0.06)}
+
+/* Mobile */
+.nav-toggle{display:none;background:transparent;border:0;color:inherit;font-size:1.25rem}
+@media (max-width:800px){
+  .nav-links{position:fixed;right:1rem;top:64px;flex-direction:column;background:linear-gradient(180deg, rgba(6,8,15,0.98), rgba(8,10,18,0.95));padding:0.5rem;border-radius:10px;display:none;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+  .nav-links.show{display:flex}
+  .nav-toggle{display:block}
+}
+
+/* Hero */
+.hero{
+  padding:6rem 0 4rem;
+  position:relative;
+  overflow:visible;
+}
+.hero-inner{display:grid;grid-template-columns:120px 1fr;gap:1.25rem;align-items:center}
+.hero-left{display:flex;align-items:center;justify-content:center}
+.avatar{
+  width: 100px !important;height:100px !important;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background-image: url('../images/pp1.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow:0 8px 30px rgba(11,18,40,0.6), inset 0 -6px 18px rgba(255,255,255,0.06);
+  font-size:1.25rem;letter-spacing:0.8px;
+  transform:translateY(0);transition:transform .45s var(--easing);
+}
+.avatar:hover{transform:translateY(-6px) rotate(-2deg)}
+
+.hero-right h1{font-size:2.1rem;margin:0 0 0.5rem;display:flex;gap:.5rem;align-items:baseline}
+.name{color:var(--accent)}
+.hero .sub{color:var(--muted);margin-bottom:1rem;min-height:26px}
+.hero-actions{display:flex;gap:0.75rem}
+.cta{display:inline-block;background:var(--accent);color:white !important;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 8px 30px rgba(124,92,255,0.12);transition:transform .18s var(--easing)}
+.cta:hover{transform:translateY(-3px)}
+.ghost{display:inline-block;border:1px solid rgba(255,255,255,0.06);color:#dbe9ff;padding:0.5rem 0.9rem;border-radius:10px;text-decoration:none;transition:background .18s var(--easing),transform .12s var(--easing)}
+.ghost:hover{background:rgba(255,255,255,0.02);transform:translateY(-2px)}
+
+/* Sections & Cards */
+.section{padding:2rem 0}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;box-shadow:0 6px 40px rgba(2,6,23,0.6);transition:transform .18s var(--easing),box-shadow .18s var(--easing)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 60px rgba(2,6,23,0.7)}
+.muted{color:var(--muted);font-size:0.95rem;margin-top:-0.25rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:1rem}
+
+/* Skills chips */
+.chips{display:flex;flex-wrap:wrap;gap:0.5rem}
+.chip{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:0.45rem 0.75rem;border-radius:999px;color:#dbe9ff;font-weight:600;font-size:0.9rem;border:1px solid rgba(255,255,255,0.02);transition:transform .12s var(--easing)}
+.chip:hover{transform:translateY(-4px)}
+
+/* Skills section: grouped lists */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+  gap:1rem;
+  margin-top:0.75rem;
+}
+.skill-group{padding:0.9rem;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+.skill-group h3{margin:0 0 0.5rem;color:var(--accent);font-size:1.05rem}
+.skill-list{margin:0;padding-left:1.15rem;color:var(--text-color);list-style:disc}
+.skill-list li{margin:0.35rem 0;line-height:1.4;color:var(--text-color);font-weight:600;font-size:0.95rem}
+
+/* Footer */
+.site-footer{padding:1rem 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:2rem;font-size: small;}
+
+/* Reveal animations */
+.reveal{
+  /* was: opacity:0; transform:translateY(12px) scale(.995); */
+  /* make visible by default (graceful fallback when JS fails) */
+  opacity: 1;
+  transform: none;
+  transition: opacity .6s var(--easing), transform .6s var(--easing);
+}
+
+/* Small utilities */
+a{color:var(--accent)}
+@media (max-width:800px){
+  .hero-inner{grid-template-columns:1fr;gap:1rem;text-align:left}
+
+}  .hero-left{justify-content:flex-start}
+  .avatar{width:72px;height:72px;font-size:1rem}
+
+/* theme-aware text colors */
+:root{
+  /* ...existing vars... */
+  --text-color: #e6eef8; /* default (dark theme) text */
+  --avatar-text: #ffffff;
+  --chip-text: #dbe9ff;
+}
+
+/* ensure body uses the variable so theme can override it */
+body{
+  /* ...existing body styles... */
+  color: var(--text-color);
+}
+
+/* components that previously used hardcoded white -> use var */
+.logo,
+.nav-link,
+.theme-toggle,
+.ghost,
+.avatar,
+.chip,
+.site-footer,
+.hero-right h1,
+.hero-right p,
+.card,
+a {
+  color: var(--text-color);
+}
+
+/* keep muted using its own var */
+.muted { color: var(--muted); }
+
+/* avatar and chips specifics */
+.avatar { color: var(--avatar-text) !important; }
+.chip { color: var(--chip-text); }
+
+/* LIGHT THEME OVERRIDES */
+body.light-theme{
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --muted: #586069;
+  --accent: #5b21b6;
+  --accent-2: #059669;
+  --glass: rgba(2,6,23,0.03);
+  --text-color: #0b1220; /* dark text for light theme */
+  --avatar-text: #ffffff; /* avatar can stay light if bg is colored */
+  --chip-text: #0b1220;
+  background: linear-gradient(180deg,#ffffff 0%, #f3f6fb 100%);
+}
+
+/* ensure nav links readable in light mode */
+body.light-theme .nav-link { color: var(--text-color); }
+body.light-theme .nav-link:hover { background: rgba(11,18,32,0.03); }
+body.light-theme .nav-link.active { box-shadow: 0 8px 30px rgba(11,18,32,0.04); }
+
+/* ensure buttons/borders contrast */
+body.light-theme .theme-toggle { color: var(--text-color); border-color: rgba(11,18,32,0.06); }
+body.light-theme .ghost { border-color: rgba(11,18,32,0.06); color: var(--text-color); }
+body.light-theme a { color: var(--accent); }
+
+/* fallback: ensure any direct white text is readable in light theme */
+body.light-theme [style*="color:#e6eef8"], body.light-theme [style*="#e6eef8"] {
+  color: var(--text-color) !important;
+}
+
+#contact {
+  margin-top: 25px;
+}
+
+/* simple back-to-top icon */
+.back-to-top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:40px;
+  height:40px;
+  border-radius:8px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:var(--avatar-text, #fff);
+  border:0;
+  box-shadow:0 8px 22px rgba(2,6,23,0.45);
+  cursor:pointer;
+  z-index:120;
+  font-size:18px;
+  line-height:1;
+  transition:transform .12s ease;
+}
+.back-to-top:hover{ transform:translateY(-3px); }
+
+/* Ensure visible in light theme */
+body.light-theme .back-to-top{
+  box-shadow:0 6px 18px rgba(11,18,32,0.07);
+  color:#fff;
+}
+
+.show{
+  visibility:visible;
+}
+
+.not-show{
+  visibility:hidden;
+}
